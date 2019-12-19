@@ -1,8 +1,11 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT||3000
+const express=require('express');
+const app=express();
+const port=process.env.PORT||8000;
+app.use(express.static('public'))
+app.get('/',(req,res)=>{
+res.sendFile(__dirname+'/public/htmls/site.html');
 
-app.get('/', (req, res) => res.send('Hello World!'))
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-console.log("Hello world!");
+});
+app.listen(port,()=>
+console.log(`listening to port ${port}!`));
+console.log(__dirname);
